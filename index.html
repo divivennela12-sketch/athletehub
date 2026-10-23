@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AthleteHub | Train Smarter</title>
+
+<style>
+:root {
+  --bg: #0b1020;
+  --panel: #151d30;
+  --green: #a3ff68;
+  --text: #f4f7fb;
+  --muted: #9aa8bd;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #263047;
+}
+.logo { font-size: 23px; font-weight: bold; }
+.logo span { color: var(--green); }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 20px;
+}
+nav a:hover { color: var(--green); }
+main { max-width: 1150px; margin: auto; padding: 35px 20px; }
+.hero {
+  padding: 40px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #1a2d3b, #172039);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+.hero h1 { font-size: clamp(32px, 5vw, 55px); margin: 10px 0; }
+.hero p { color: var(--muted); line-height: 1.7; }
+.hero strong { color: var(--green); }
+button {
+  background: var(--green);
+  color: #101a12;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { opacity: .85; }
+.hero-icon { font-size: 100px; }
+h2 { margin-top: 35px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid #273148;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+.label { color: var(--muted); font-size: 14px; }
+.metric { font-size: 32px; font-weight: bold; margin: 12px 0; }
+.green { color: var(--green); }
+.progress {
+  height: 9px;
+  background: #30394d;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+.bar {
+  height: 100%;
+  width: 0%;
+  background: var(--green);
+  transition: width .3s;
+}
+input, select {
+  width: 100%;
+  background: #0e1627;
+  color: white;
+  padding: 12px;
+  border: 1px solid #35415a;
+  border-radius: 8px;
+  margin: 7px 0 14px;
+}
+form { max-width: 500px; }
+.item {
+  padding: 13px 0;
+  border-bottom: 1px solid #30394d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.delete {
+  background: #ff7777;
+  padding: 8px 10px;
+}
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+}
+@media(max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 25px; }
+  .hero-icon { font-size: 55px; }
+  nav a { margin-left: 8px; font-size: 12px; }
+  header { padding: 18px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">ATHLETE<span>HUB.</span></div>
+  <nav>
+    <a href="#dashboard">Home</a>
+    <a href="#workouts">Workouts</a>
+    <a href="#planner">Planner</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <p class="green">YOUR PERSONAL TRAINING SPACE</p>
+    <h1>Train smart.<br>Play stronger.</h1>
+    <p>Track your effort, build consistency, and celebrate<br>
+    every step of your athletic journey.</p>
+    <button onclick="document.querySelector('#workouts').scrollIntoView({behavior:'smooth'})">
+      + Log a Workout
+    </button>
+  </div>
+  <div class="hero-icon">🏆</div>
+</section>
+
+<section id="dashboard">
+  <h2>Your Dashboard</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Workouts completed</div>
+      <div class="metric" id="total">0</div>
+      <div class="label">All-time sessions recorded</div>
+    </div>
+    <div class="card">
+      <div class="label">Training minutes</div>
+      <div class="metric" id="minutes">0</div>
+      <div class="label">Total recorded duration</div>
+    </div>
+    <div class="card">
+      <div class="label">Weekly goal</div>
+      <div class="metric"><span id="weekly">0</span> / <span id="goal">4</span></div>
+      <div class="progress"><div class="bar" id="goalbar"></div></div>
+      <label class="label" for="goalInput">Weekly workout target</label>
+      <input id="goalInput" type="number" min="1" max="30" value="4">
+      <button onclick="saveGoal()">Update Goal</button>
+    </div>
+  </div>
+</section>
+
+<section id="workouts">
+  <h2>Log a Workout</h2>
+  <div class="card">
+    <form id="workoutForm">
+      <label for="exercise">Workout or activity</label>
+      <input id="exercise" placeholder="e.g. Running, Football, Gym" required>
+
+      <label for="sport">Sport</label>
+      <select id="sport">
+        <option>Running</option>
+        <option>Football</option>
+        <option>Cricket</option>
+        <option>Basketball</option>
+        <option>Swimming</option>
+        <option>Gym / Strength</option>
+        <option>Other</option>
+      </select>
+
+      <label for="duration">Duration (minutes)</label>
+      <input id="duration" type="number" min="1" max="1440" required>
+
+      <label for="date">Date</label>
+      <input id="date" type="date" required>
+
+      <button type="submit">Save Workout</button>
+    </form>
+  </div>
+  <div class="card">
+    <h3>Recent Workouts</h3>
+    <div id="workoutList">No workouts yet. Log your first session!</div>
+  </div>
+</section>
+
+<section id="planner">
+  <h2>Training Planner</h2>
+  <div class="card">
+    <p class="label">Plan your next training session.</p>
+    <form id="planForm">
+      <label for="planDate">Training date</label>
+      <input id="planDate" type="date" required>
+
+      <label for="planActivity">Planned activity</label>
+      <input id="planActivity" placeholder="e.g. Speed drills" required>
+
+      <button type="submit">Add to Planner</button>
+    </form>
+    <div id="planList">No planned sessions yet.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  AthleteHub © 2026 · Progress over perfection.
+</footer>
+
+<script>
+const getData = (key, fallback) => {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value ?? fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+let workouts = getData("ah_workouts", []);
+let plans = getData("ah_plans", []);
+let goal = getData("ah_goal", 4);
+
+document.getElementById("date").value =
+  new Date().toLocaleDateString("en-CA");
+document.getElementById("planDate").value =
+  new Date().toLocaleDateString("en-CA");
+document.getElementById("goalInput").value = goal;
+
+function saveData() {
+  localStorage.setItem("ah_workouts", JSON.stringify(workouts));
+  localStorage.setItem("ah_plans", JSON.stringify(plans));
+  localStorage.setItem("ah_goal", JSON.stringify(goal));
+}
+
+function saveGoal() {
+  const value = Number(document.getElementById("goalInput").value);
+  if (!Number.isInteger(value) || value < 1 || value > 30) {
+    alert("Choose a weekly goal between 1 and 30.");
+    return;
+  }
+  goal = value;
+  saveData();
+  render();
+}
+
+document.getElementById("workoutForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  workouts.unshift({
+    id: Date.now(),
+    name: document.getElementById("exercise").value.trim(),
+    sport: document.getElementById("sport").value,
+    duration: Number(document.getElementById("duration").value),
+    date: document.getElementById("date").value
+  });
+
+  saveData();
+  e.target.reset();
+  document.getElementById("date").value =
+    new Date().toLocaleDateString("en-CA");
+  render();
+});
+
+document.getElementById("planForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  plans.push({
+    id: Date.now(),
+    date: document.getElementById("planDate").value,
+    activity: document.getElementById("planActivity").value.trim()
+  });
+
+  saveData();
+  e.target.reset();
+  document.getElementById("planDate").value =
+    new Date().toLocaleDateString("en-CA");
+  render();
+});
+
+function removeWorkout(id) {
+  workouts = workouts.filter(w => w.id !== id);
+  saveData();
+  render();
+}
+
+function removePlan(id) {
+  plans = plans.filter(p => p.id !== id);
+  saveData();
+  render();
+}
+
+function render() {
+  const today = new Date();
+  const start = new Date(today);
+  start.setHours(0, 0, 0, 0);
+  const day = (start.getDay() + 6) % 7;
+  start.setDate(start.getDate() - day);
+  const weekStart = start.toLocaleDateString("en-CA");
+  const todayString = today.toLocaleDateString("en-CA");
+
+  const thisWeek = workouts.filter(w =>
+    w.date >= weekStart && w.date <= todayString
+  ).length;
+
+  document.getElementById("total").textContent = workouts.length;
+  document.getElementById("minutes").textContent =
+    workouts.reduce((sum, w) => sum + w.duration, 0);
+  document.getElementById("weekly").textContent = thisWeek;
+  document.getElementById("goal").textContent = goal;
+  document.getElementById("goalbar").style.width =
+    Math.min(100, thisWeek / goal * 100) + "%";
+
+  document.getElementById("workoutList").innerHTML =
+    workouts.length ? workouts.map(w => `
+      <div class="item">
+        <div>
+          <strong>${escapeHTML(w.name)}</strong>
+          <div class="label">${escapeHTML(w.sport)} ·
+            ${w.duration} min · ${escapeHTML(w.date)}</div>
+        </div>
+        <button class="delete" onclick="removeWorkout(${w.id})">
+          Delete
+        </button>
+      </div>
+    `).join("") : "No workouts yet. Log your first session!";
+
+  document.getElementById("planList").innerHTML =
+    plans.length ? plans.slice().sort((a,b) =>
+      a.date.localeCompare(b.date)
+    ).map(p => `
+      <div class="item">
+        <div><strong>${escapeHTML(p.activity)}</strong>
+        <div class="label">${escapeHTML(p.date)}</div></div>
+        <button class="delete" onclick="removePlan(${p.id})">
+          Delete
+        </button>
+      </div>
+    `).join("") : "No planned sessions yet.";
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  })[ch]);
+}
+
+render();
+</script>
+</body>
+</html>
