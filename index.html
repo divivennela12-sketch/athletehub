@@ -224,7 +224,16 @@ footer{margin-top:40px;border-top:1px solid var(--line);
         <input id="athleteName" maxlength="50" placeholder="Your display name" required>
         <label for="athleteEmail">Email (demo identifier only)</label>
         <input id="athleteEmail" type="email" maxlength="100"
-          placeholder="athlete@example.com" required>
+          placeholder="athlete@example.com" required> 
+        <label for="athletePassword">Password</label>
+<input
+  id="athletePassword"
+  type="password"
+  minlength="8"
+  autocomplete="new-password"
+  placeholder="At least 8 characters"
+  required
+>
         <button type="submit" id="accountSubmit">Create Profile</button>
       </form>
       <div class="actions">
