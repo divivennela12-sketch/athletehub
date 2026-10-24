@@ -5,293 +5,242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AthleteHub | Train Beyond Limits</title>
-
 <style>
 :root {
-  --bg: #080d18;
-  --panel: #111b2b;
-  --green: #b6ff5c;
-  --white: #f5f7fb;
-  --muted: #94a3b8;
+  --bg:#080d18; --panel:#111b2b; --line:#27364c;
+  --green:#b6ff5c; --text:#f5f7fb; --muted:#9cabc0;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--white);
-}
-header {
-  padding: 20px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #243044;
-  position: sticky;
-  top: 0;
-  background: rgba(8,13,24,.95);
-  backdrop-filter: blur(12px);
-  z-index: 5;
-}
-.logo { font-size: 24px; font-weight: 900; }
-.logo span { color: var(--green); }
-nav { display: flex; gap: 22px; }
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 14px;
-}
-nav a:hover { color: var(--green); }
-main { max-width: 1150px; margin: auto; padding: 30px 20px; }
-.hero {
-  min-height: 340px;
-  padding: 42px;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(8,13,24,.97), rgba(8,13,24,.62)),
-    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85")
-    center/cover;
-  border: 1px solid #29364a;
-}
-.tag {
-  color: var(--green);
-  font-weight: bold;
-  font-size: 12px;
-  letter-spacing: 3px;
-}
-.hero h1 {
-  font-size: clamp(38px, 6vw, 65px);
-  line-height: 1.04;
-  margin: 16px 0;
-}
-.hero h1 span { color: var(--green); }
-.hero p { color: #c0c9d8; line-height: 1.7; }
-button {
-  border: 0;
-  padding: 13px 18px;
-  border-radius: 9px;
-  background: var(--green);
-  color: #10180b;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform .2s, opacity .2s;
-}
-button:hover { transform: translateY(-2px); opacity: .9; }
-section { scroll-margin-top: 90px; }
-h2 { font-size: 25px; margin: 35px 0 18px; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 17px;
-}
-.card {
-  background: var(--panel);
-  border: 1px solid #24334a;
-  border-radius: 17px;
-  padding: 22px;
-  transition: transform .25s, border-color .25s;
-  animation: appear .6s ease both;
-}
-.card:hover { transform: translateY(-4px); border-color: #8bcf4a; }
-.metric { font-size: 34px; font-weight: 800; margin: 15px 0 8px; }
-.muted { color: var(--muted); font-size: 13px; }
-.green { color: var(--green); }
-.icon { font-size: 25px; }
-.progress {
-  height: 9px;
-  background: #29364a;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 16px 0;
-}
-.bar {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #73d52d, var(--green));
-  border-radius: 20px;
-  transition: width .6s;
-}
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0 15px;
-  background: #0b1423;
-  color: white;
-  border: 1px solid #34435a;
-  border-radius: 8px;
-}
-label { font-size: 13px; color: #c6d0df; }
-form { max-width: 550px; }
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 15px 0;
-  border-bottom: 1px solid #29364a;
-}
-.delete { background: #ff8585; padding: 8px 11px; }
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-.sport-image {
-  width: 100%;
-  height: 165px;
-  object-fit: cover;
-  border-radius: 11px;
-  margin-bottom: 13px;
-}
-footer {
-  text-align: center;
-  padding: 35px 20px;
-  color: var(--muted);
-  border-top: 1px solid #243044;
-  margin-top: 35px;
-}
-@keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media(max-width: 700px) {
-  header { padding: 17px; flex-wrap: wrap; gap: 15px; }
-  nav { gap: 12px; flex-wrap: wrap; }
-  nav a { font-size: 12px; }
-  .hero { padding: 26px; min-height: 300px; }
-  .grid, .split { grid-template-columns: 1fr; }
-  main { padding: 20px 14px; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0;border-radius:9px;padding:12px 16px;
+  background:var(--green);color:#10180b;font-weight:700}
+button:hover{filter:brightness(.93)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--green);outline-offset:3px}
+.secondary{background:#26364b;color:white}
+.danger{background:#66303a;color:white;padding:8px 11px}
+header{height:auto;min-height:76px;padding:16px 6%;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  flex-wrap:wrap;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:#080d18f5;backdrop-filter:blur(12px);
+  z-index:10}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--green)}
+nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+nav a{color:var(--muted);font-size:14px;text-decoration:none}
+nav a:hover{color:var(--green)}
+#accountLabel{font-size:13px;color:var(--green)}
+main{max-width:1150px;margin:auto;padding:28px 20px}
+.hero{border:1px solid var(--line);border-radius:24px;padding:45px;
+  min-height:310px;display:flex;align-items:center;justify-content:space-between;
+  gap:24px;background:linear-gradient(115deg,#182e39,#17223c 75%)}
+.eyebrow{font-size:12px;font-weight:bold;letter-spacing:3px;color:var(--green)}
+h1{font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-2px;
+  margin:18px 0}
+h1 span{color:var(--green)}
+.hero p{line-height:1.8;color:#c1cde0;max-width:530px}
+.trophy{font-size:105px;flex-shrink:0}
+section{scroll-margin-top:105px;margin-top:36px}
+h2{font-size:25px;margin:0 0 18px}
+h3{margin:8px 0 12px}
+.muted{color:var(--muted);font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{background:var(--panel);border:1px solid var(--line);
+  border-radius:17px;padding:22px;min-width:0}
+.metric{font-size:36px;font-weight:800;margin:12px 0}
+.green{color:var(--green)}
+.progress{height:8px;background:#29364a;border-radius:20px;
+  overflow:hidden;margin:14px 0}
+.bar{height:100%;width:0;background:var(--green);transition:width .3s}
+label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}
+input,select{width:100%;padding:12px;background:#0b1423;color:white;
+  border:1px solid #34435a;border-radius:8px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+form button{margin-top:14px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.item{display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item-info{min-width:0;overflow-wrap:anywhere}
+.item-info strong{display:block;margin-bottom:5px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chart-wrap{height:220px;position:relative;width:100%}
+canvas{width:100%;height:220px;display:block}
+.notice{padding:13px 15px;background:#202d3e;border-radius:10px;
+  color:#d2deed;font-size:13px;line-height:1.6;margin-bottom:16px}
+.hidden{display:none!important}
+footer{margin-top:40px;border-top:1px solid var(--line);
+  text-align:center;padding:30px 15px;color:var(--muted);font-size:13px}
+@media(max-width:760px){
+ header{padding:15px 18px}nav{gap:13px}nav a{font-size:12px}
+ main{padding:20px 14px}.hero{padding:26px;min-height:0}
+ .trophy{font-size:55px}.grid{grid-template-columns:1fr}
+ .split{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}
+ h1{letter-spacing:-1px}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">ATHLETE<span>HUB.</span></div>
+  <a class="logo" href="#home" style="text-decoration:none;color:white">
+    ATHLETE<span>HUB.</span>
+  </a>
   <nav>
+    <a href="#home">Home</a>
     <a href="#dashboard">Dashboard</a>
-    <a href="#workouts">Workouts</a>
-    <a href="#sports">Sports</a>
+    <a href="#training">Training</a>
     <a href="#planner">Planner</a>
+    <a href="#account">Account</a>
   </nav>
+  <span id="accountLabel">Guest mode</span>
 </header>
 
 <main>
-<section class="hero">
+<section class="hero" id="home" style="margin-top:0">
   <div>
-    <div class="tag">YOUR NEXT LEVEL STARTS HERE</div>
-    <h1>Train Hard.<br><span>Rise Higher.</span></h1>
-    <p>Your training journey, your goals, your progress.<br>
-    Build consistency and become a stronger athlete.</p>
-    <button onclick="document.querySelector('#workouts').scrollIntoView()">
-      + Start Training
+    <div class="eyebrow">YOUR PERSONAL TRAINING SPACE</div>
+    <h1>Train smart.<br><span>Play stronger.</span></h1>
+    <p>Plan your sessions, track your effort and celebrate every step
+      of your athletic journey.</p>
+    <button onclick="document.getElementById('training').scrollIntoView()">
+      + Log a Workout
     </button>
   </div>
+  <div class="trophy" aria-hidden="true">🏆</div>
 </section>
 
 <section id="dashboard">
-  <h2>Your Performance</h2>
+  <h2>Your Dashboard</h2>
   <div class="grid">
     <div class="card">
-      <div class="icon">🏆</div>
-      <div class="muted">Total Workouts</div>
+      <div class="muted">TOTAL WORKOUTS</div>
       <div class="metric" id="total">0</div>
-      <div class="muted">Every session counts</div>
+      <div class="muted">All recorded sessions</div>
     </div>
     <div class="card">
-      <div class="icon">⚡</div>
-      <div class="muted">Training Minutes</div>
-      <div class="metric" id="minutes">0</div>
-      <div class="muted">Time spent training</div>
+      <div class="muted">TRAINING TIME</div>
+      <div class="metric"><span id="minutes">0</span></div>
+      <div class="muted">Total minutes recorded</div>
     </div>
     <div class="card">
-      <div class="icon">🎯</div>
-      <div class="muted">Weekly Goal</div>
-      <div class="metric"><span id="weekly">0</span>/<span id="goal">4</span></div>
-      <div class="progress"><div class="bar" id="goalbar"></div></div>
+      <div class="muted">THIS WEEK'S GOAL</div>
+      <div class="metric"><span id="weekly">0</span>/<span id="goalText">4</span></div>
+      <div class="progress"><div class="bar" id="goalBar"></div></div>
       <label for="goalInput">Sessions per week</label>
       <input id="goalInput" type="number" min="1" max="30" value="4">
-      <button onclick="saveGoal()">Update Goal</button>
+      <button style="margin-top:10px" onclick="saveGoal()">Save Goal</button>
     </div>
   </div>
 </section>
 
-<section id="sports">
-  <h2>Explore Your Sport</h2>
-  <div class="grid">
-    <div class="card">
-      <img class="sport-image"
-      src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80"
-      alt="Football training">
-      <h3>⚽ Football</h3>
-      <p class="muted">Speed, coordination and teamwork.</p>
+<section id="performance">
+  <h2>Performance Overview</h2>
+  <div class="card">
+    <p class="muted">Minutes trained per day over the last seven days</p>
+    <div class="chart-wrap">
+      <canvas id="chart" role="img"
+        aria-label="Bar chart of training minutes for the past seven days">
+        Training minutes chart.
+      </canvas>
     </div>
-    <div class="card">
-      <img class="sport-image"
-      src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=600&q=80"
-      alt="Cricket ground">
-      <h3>🏏 Cricket</h3>
-      <p class="muted">Practice your skills and consistency.</p>
-    </div>
-    <div class="card">
-      <img class="sport-image"
-      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
-      alt="Fitness training gym">
-      <h3>💪 Fitness</h3>
-      <p class="muted">Build strength and athletic ability.</p>
-    </div>
+    <p class="muted" id="chartSummary">Record a workout to see your progress.</p>
   </div>
 </section>
 
-<section id="workouts">
+<section id="training">
   <h2>Log Your Workout</h2>
   <div class="split">
     <div class="card">
-      <p class="muted">RECORD YOUR TRAINING SESSION</p>
+      <p class="muted">RECORD A TRAINING SESSION</p>
       <form id="workoutForm">
         <label for="exercise">Activity name</label>
-        <input id="exercise" placeholder="e.g. Sprint practice" required>
+        <input id="exercise" maxlength="70" placeholder="e.g. Sprint practice" required>
         <label for="sport">Sport</label>
         <select id="sport">
-          <option>Running</option>
-          <option>Football</option>
-          <option>Cricket</option>
-          <option>Basketball</option>
-          <option>Swimming</option>
-          <option>Gym / Strength</option>
-          <option>Other</option>
+          <option>Running</option><option>Football</option><option>Cricket</option>
+          <option>Basketball</option><option>Swimming</option>
+          <option>Gym / Strength</option><option>Tennis</option><option>Other</option>
         </select>
-        <label for="duration">Duration (minutes)</label>
+        <label for="duration">Duration in minutes</label>
         <input id="duration" type="number" min="1" max="1440" required>
-        <label for="date">Training date</label>
-        <input id="date" type="date" required>
+        <label for="workoutDate">Date</label>
+        <input id="workoutDate" type="date" required>
         <button type="submit">Save Workout</button>
       </form>
     </div>
     <div class="card">
-      <p class="muted">YOUR RECENT ACTIVITY</p>
-      <div id="workoutList">Your workouts will appear here.</div>
+      <h3>Recent Workouts</h3>
+      <div id="workoutList" class="muted">No workouts yet.</div>
     </div>
   </div>
 </section>
 
 <section id="planner">
-  <h2>Training Planner</h2>
-  <div class="card">
-    <form id="planForm">
-      <label for="planDate">Planned date</label>
-      <input id="planDate" type="date" required>
-      <label for="planActivity">Training activity</label>
-      <input id="planActivity" placeholder="e.g. Passing drills" required>
-      <button type="submit">Add Session</button>
-    </form>
-    <div id="planList">No planned sessions yet.</div>
+  <h2>Training Schedule</h2>
+  <div class="split">
+    <div class="card">
+      <p class="muted">PLAN YOUR NEXT SESSION</p>
+      <form id="planForm">
+        <label for="planActivity">Activity</label>
+        <input id="planActivity" maxlength="70" placeholder="e.g. Passing drills" required>
+        <label for="planSport">Sport</label>
+        <select id="planSport">
+          <option>Running</option><option>Football</option><option>Cricket</option>
+          <option>Basketball</option><option>Swimming</option>
+          <option>Gym / Strength</option><option>Tennis</option><option>Other</option>
+        </select>
+        <label for="planDate">Date</label>
+        <input id="planDate" type="date" required>
+        <label for="planTime">Time (optional)</label>
+        <input id="planTime" type="time">
+        <button type="submit">Add to Schedule</button>
+      </form>
+    </div>
+    <div class="card">
+      <h3>Upcoming Sessions</h3>
+      <div id="planList" class="muted">No sessions planned yet.</div>
+    </div>
+  </div>
+</section>
+
+<section id="account">
+  <h2>Athlete Account</h2>
+  <div class="notice">
+    Demo mode: this static website stores demo profile information and
+    training data in this browser only. It does not create secure online
+    accounts or authenticate users. Never enter a real password here.
+  </div>
+  <div class="split">
+    <div class="card">
+      <h3 id="accountHeading">Create a Demo Profile</h3>
+      <p class="muted">Set up a local profile on this device.</p>
+      <form id="accountForm">
+        <label for="athleteName">Athlete name</label>
+        <input id="athleteName" maxlength="50" placeholder="Your display name" required>
+        <label for="athleteEmail">Email (demo identifier only)</label>
+        <input id="athleteEmail" type="email" maxlength="100"
+          placeholder="athlete@example.com" required>
+        <button type="submit" id="accountSubmit">Create Profile</button>
+      </form>
+      <div class="actions">
+        <button class="secondary" id="switchAccount" type="button">
+          Already have a demo profile? Sign in
+        </button>
+        <button class="danger hidden" id="signout" type="button">Sign Out</button>
+      </div>
+      <p class="muted" id="accountMessage" aria-live="polite"></p>
+    </div>
+    <div class="card">
+      <div class="muted">ATHLETE PROFILE</div>
+      <div class="metric" style="font-size:28px" id="profileName">Guest Athlete</div>
+      <p class="muted" id="profileEmail">No demo profile active.</p>
+      <p class="muted">Your workout information stays in this browser.
+        It is not synced across devices or shared with other athletes.</p>
+    </div>
   </div>
 </section>
 </main>
@@ -299,137 +248,295 @@ footer {
 <footer>
   <div class="logo">ATHLETE<span>HUB.</span></div>
   <p>Train with purpose. Progress with consistency.</p>
-  <p>© 2026 AthleteHub</p>
+  <p>© 2026 AthleteHub · Personal training tracker</p>
 </footer>
 
 <script>
-const read = (key, fallback) => {
-  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
-  catch { return fallback; }
-};
+"use strict";
 
-let workouts = read("ah_workouts", []);
-let plans = read("ah_plans", []);
-let goal = read("ah_goal", 4);
+const $ = id => document.getElementById(id);
 
-function localDate(d = new Date()) {
-  const offset = d.getTimezoneOffset();
-  return new Date(d.getTime() - offset * 60000)
-    .toISOString().slice(0, 10);
+function load(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+}
+function save(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    alert("Browser storage is unavailable or full. Your changes may not persist.");
+    return false;
+  }
+}
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[c]);
+}
+function localDate(date = new Date()) {
+  const d = new Date(date);
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0,10);
 }
 
-date.value = localDate();
-planDate.value = localDate();
-goalInput.value = goal;
+let workouts = load("ah3_workouts", []);
+let plans = load("ah3_plans", []);
+let goal = load("ah3_goal", 4);
+let profile = load("ah3_profile", null);
+let accountMode = "signup";
 
-function persist() {
-  localStorage.setItem("ah_workouts", JSON.stringify(workouts));
-  localStorage.setItem("ah_plans", JSON.stringify(plans));
-  localStorage.setItem("ah_goal", JSON.stringify(goal));
+$("workoutDate").value = localDate();
+$("planDate").value = localDate();
+$("goalInput").value = goal;
+
+$("workoutForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const name = $("exercise").value.trim();
+  const minutes = Number($("duration").value);
+  const date = $("workoutDate").value;
+  if (!name || !Number.isInteger(minutes) || minutes < 1 ||
+      minutes > 1440 || !date) {
+    alert("Enter a valid activity, date and duration.");
+    return;
+  }
+  workouts.unshift({
+    id: makeId(), name, sport: $("sport").value,
+    minutes, date
+  });
+  save("ah3_workouts", workouts);
+  $("workoutForm").reset();
+  $("workoutDate").value = localDate();
+  render();
+});
+
+$("planForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const activity = $("planActivity").value.trim();
+  const date = $("planDate").value;
+  const time = $("planTime").value;
+  if (!activity || !date) return;
+  plans.push({
+    id: makeId(), activity, sport: $("planSport").value, date, time
+  });
+  save("ah3_plans", plans);
+  $("planForm").reset();
+  $("planDate").value = localDate();
+  render();
+});
+
+function makeId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
 
 function saveGoal() {
-  const value = Number(goalInput.value);
-  if (!Number.isInteger(value) || value < 1 || value > 30) {
-    alert("Enter a weekly goal between 1 and 30.");
+  const n = Number($("goalInput").value);
+  if (!Number.isInteger(n) || n < 1 || n > 30) {
+    alert("Choose a weekly goal from 1 to 30 sessions.");
     return;
   }
-  goal = value;
-  persist();
+  goal = n;
+  save("ah3_goal", goal);
   render();
-}
-
-workoutForm.addEventListener("submit", e => {
-  e.preventDefault();
-  workouts.unshift({
-    id: Date.now(),
-    name: exercise.value.trim(),
-    sport: document.getElementById("sport").value,
-    duration: Number(duration.value),
-    date: date.value
-  });
-  persist();
-  workoutForm.reset();
-  date.value = localDate();
-  render();
-});
-
-planForm.addEventListener("submit", e => {
-  e.preventDefault();
-  plans.push({
-    id: Date.now(),
-    date: planDate.value,
-    activity: planActivity.value.trim()
-  });
-  persist();
-  planForm.reset();
-  planDate.value = localDate();
-  render();
-});
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;",
-    '"':"&quot;", "'":"&#39;"
-  })[c]);
 }
 
 function removeWorkout(id) {
   workouts = workouts.filter(w => w.id !== id);
-  persist();
+  save("ah3_workouts", workouts);
+  render();
+}
+function removePlan(id) {
+  plans = plans.filter(p => p.id !== id);
+  save("ah3_plans", plans);
   render();
 }
 
-function removePlan(id) {
-  plans = plans.filter(p => p.id !== id);
-  persist();
-  render();
+function weekStart() {
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return localDate(d);
 }
 
 function render() {
-  const now = new Date();
-  const start = new Date(now);
-  start.setHours(0, 0, 0, 0);
-  start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
+  const start = weekStart();
+  const today = localDate();
+  const weekly = workouts.filter(w => w.date >= start && w.date <= today).length;
+  const totalMinutes = workouts.reduce((sum,w) => sum + Number(w.minutes || 0),0);
 
-  const startString = localDate(start);
-  const todayString = localDate(now);
-  const weeklyCount = workouts.filter(w =>
-    w.date >= startString && w.date <= todayString
-  ).length;
+  $("total").textContent = workouts.length;
+  $("minutes").textContent = totalMinutes;
+  $("weekly").textContent = weekly;
+  $("goalText").textContent = goal;
+  $("goalBar").style.width = Math.min(100,weekly / goal * 100) + "%";
 
-  document.getElementById("total").textContent = workouts.length;
-  document.getElementById("minutes").textContent =
-    workouts.reduce((sum, w) => sum + w.duration, 0);
-  document.getElementById("weekly").textContent = weeklyCount;
-  document.getElementById("goal").textContent = goal;
-  document.getElementById("goalbar").style.width =
-    Math.min(100, weeklyCount / goal * 100) + "%";
-
-  document.getElementById("workoutList").innerHTML =
-    workouts.length ? workouts.map(w => `
+  $("workoutList").innerHTML = workouts.length
+    ? workouts.slice(0,20).map(w => `
       <div class="item">
-        <div><strong>${escapeHTML(w.name)}</strong>
-          <div class="muted">${escapeHTML(w.sport)} ·
-          ${w.duration} min · ${escapeHTML(w.date)}</div>
+        <div class="item-info">
+          <strong>${escapeHTML(w.name)}</strong>
+          <div class="muted">${escapeHTML(w.sport)} · ${Number(w.minutes)} min</div>
+          <div class="muted">${escapeHTML(w.date)}</div>
         </div>
-        <button class="delete" onclick="removeWorkout(${w.id})">×</button>
-      </div>
-    `).join("") : "No workouts yet. Add your first session!";
+        <button class="danger" data-delete-workout="${escapeHTML(w.id)}"
+          aria-label="Delete workout">×</button>
+      </div>`).join("")
+    : "No workouts yet. Record your first session!";
 
-  document.getElementById("planList").innerHTML =
-    plans.length ? plans.slice().sort((a,b) =>
-      a.date.localeCompare(b.date)
-    ).map(p => `
+  const futurePlans = plans.filter(p => p.date >= today)
+    .sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
+
+  $("planList").innerHTML = plans.length
+    ? plans.slice().sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time))
+      .map(p => `
       <div class="item">
-        <div><strong>${escapeHTML(p.activity)}</strong>
-          <div class="muted">${escapeHTML(p.date)}</div>
+        <div class="item-info">
+          <strong>${escapeHTML(p.activity)}</strong>
+          <div class="muted">${escapeHTML(p.sport)} · ${escapeHTML(p.date)}
+            ${p.time ? " · " + escapeHTML(p.time) : ""}</div>
+          <div class="muted">${p.date < today ? "Past session" :
+            "Upcoming session"}</div>
         </div>
-        <button class="delete" onclick="removePlan(${p.id})">×</button>
-      </div>
-    `).join("") : "No planned sessions yet.";
+        <button class="danger" data-delete-plan="${escapeHTML(p.id)}"
+          aria-label="Delete planned session">×</button>
+      </div>`).join("")
+    : "No sessions planned yet.";
+
+  drawChart();
+  renderProfile();
 }
 
+$("workoutList").addEventListener("click", event => {
+  const button = event.target.closest("[data-delete-workout]");
+  if (button) removeWorkout(button.dataset.deleteWorkout);
+});
+$("planList").addEventListener("click", event => {
+  const button = event.target.closest("[data-delete-plan]");
+  if (button) removePlan(button.dataset.deletePlan);
+});
+
+function drawChart() {
+  const canvas = $("chart");
+  const rect = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+  const width = Math.max(280, rect.width);
+  const height = 220;
+  canvas.width = Math.round(width * ratio);
+  canvas.height = Math.round(height * ratio);
+  const ctx = canvas.getContext("2d");
+  ctx.scale(ratio,ratio);
+  ctx.clearRect(0,0,width,height);
+
+  const days = [];
+  const base = new Date();
+  base.setHours(0,0,0,0);
+  for (let i=6;i>=0;i--) {
+    const d = new Date(base);
+    d.setDate(d.getDate()-i);
+    const key = localDate(d);
+    days.push({
+      key,
+      label: d.toLocaleDateString(undefined,{weekday:"short"}),
+      value: workouts.filter(w => w.date === key)
+        .reduce((sum,w) => sum + Number(w.minutes || 0),0)
+    });
+  }
+  const max = Math.max(30,...days.map(d=>d.value));
+  const left=35, right=10, top=18, bottom=35;
+  const chartHeight=height-top-bottom;
+  const chartWidth=width-left-right;
+  ctx.font="11px Arial";
+  ctx.textAlign="right";
+  ctx.fillStyle="#9cabc0";
+  for(let i=0;i<=3;i++){
+    const value=Math.round(max*i/3);
+    const y=top+chartHeight-(chartHeight*i/3);
+    ctx.strokeStyle="#27364c";
+    ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(width-right,y);ctx.stroke();
+    ctx.fillText(String(value),left-7,y+4);
+  }
+  const slot=chartWidth/7;
+  const barWidth=Math.min(32,slot*.56);
+  days.forEach((d,i)=>{
+    const x=left+i*slot+(slot-barWidth)/2;
+    const bh=d.value/max*chartHeight;
+    ctx.fillStyle="#b6ff5c";
+    ctx.beginPath();
+    ctx.roundRect(x,top+chartHeight-bh,barWidth,Math.max(0,bh),4);
+    ctx.fill();
+    ctx.textAlign="center";
+    ctx.fillStyle="#9cabc0";
+    ctx.fillText(d.label,x+barWidth/2,height-12);
+  });
+  const total=days.reduce((s,d)=>s+d.value,0);
+  $("chartSummary").textContent =
+    "Last 7 days: " + total + " training minutes. These are recorded minutes, not a fitness assessment.";
+}
+
+function renderProfile() {
+  $("profileName").textContent = profile ? profile.name : "Guest Athlete";
+  $("profileEmail").textContent = profile
+    ? profile.email + " · Local demo profile"
+    : "No demo profile active.";
+  $("accountLabel").textContent = profile ? profile.name : "Guest mode";
+  $("signout").classList.toggle("hidden",!profile);
+  $("accountHeading").textContent = accountMode === "signup"
+    ? "Create a Demo Profile" : "Sign In to Demo Profile";
+  $("accountSubmit").textContent = accountMode === "signup"
+    ? "Create Profile" : "Sign In";
+  $("athleteName").classList.toggle("hidden",accountMode === "login");
+  $("athleteName").required = accountMode === "signup";
+  $("switchAccount").textContent = accountMode === "signup"
+    ? "Already have a demo profile? Sign in"
+    : "Need a demo profile? Sign up";
+}
+
+$("switchAccount").addEventListener("click", () => {
+  accountMode = accountMode === "signup" ? "login" : "signup";
+  $("accountMessage").textContent = "";
+  renderProfile();
+});
+
+$("accountForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const email = $("athleteEmail").value.trim().toLowerCase();
+  if (accountMode === "signup") {
+    const name = $("athleteName").value.trim();
+    if (!name || !email) return;
+    profile = {name,email};
+    if (!save("ah3_profile",profile)) return;
+    $("accountMessage").textContent =
+      "Demo profile created on this browser. This is not a secure online account.";
+  } else {
+    const savedProfile = load("ah3_profile",null);
+    if (!savedProfile || savedProfile.email !== email) {
+      $("accountMessage").textContent =
+        "No matching demo profile found in this browser. Create a demo profile first.";
+      return;
+    }
+    profile = savedProfile;
+    $("accountMessage").textContent =
+      "Demo profile loaded. This is not secure authentication.";
+  }
+  renderProfile();
+});
+
+$("signout").addEventListener("click", () => {
+  profile = null;
+  accountMode = "login";
+  renderProfile();
+  $("accountMessage").textContent = "Signed out of this local demo.";
+});
+
+let resizeTimer;
+window.addEventListener("resize",() => {
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(drawChart,100);
+});
 render();
 </script>
 </body>
