@@ -263,6 +263,13 @@ footer{margin-top:40px;border-top:1px solid var(--line);
 
 <script>
 "use strict";
+  const SUPABASE_URL = https://shgxjovycumfwgcnphgl.supabase.co/rest/v1/
+const SUPABASE_PUBLISHABLE_KEY = sb_publishable_y2WYVwX62jf9FVMkWch_RQ_VdsLrVJE
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
 const $ = id => document.getElementById(id);
 
